@@ -16,6 +16,10 @@ namespace WorkingW_Image_Video
 {
     public partial class Form1 : Form
     {
+
+        VideoCapture captureobj;
+        bool Pause = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -41,6 +45,34 @@ namespace WorkingW_Image_Video
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private async void playToolStripMenuItem_ClickAsync(object sender, EventArgs e)
+        {
+            captureobj = new VideoCapture(0);
+            Mat m = new Mat();
+            Pause = false;
+
+            while (!Pause)
+            {
+                captureobj.Read(m);
+                if (!m.IsEmpty)
+                {
+                    pictureBox2.Image = m.Bitmap;
+                    double fps = captureobj.GetCaptureProperty(
+                        Emgu.CV.CvEnum.CapProp.Fps);
+                    if (fps == 0)
+                    {
+                        fps = 10;
+                    }
+                    await Task.Delay(1000 / Convert.ToInt32(fps));
+                }
+            }
+        }
+
+        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Pause = !Pause;
         }
     }
 }
