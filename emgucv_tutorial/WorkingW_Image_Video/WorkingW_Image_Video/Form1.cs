@@ -13,6 +13,7 @@ using Emgu;
 using Emgu.CV;
 using Emgu.CV.Structure;
 
+
 namespace WorkingW_Image_Video
 {
     public partial class Form1 : Form
@@ -115,6 +116,11 @@ namespace WorkingW_Image_Video
         {
             pictureBox1.Image = allimages[imnum].Bitmap;
             imnum += 1;
+        }
+
+        private void defSVM_button_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

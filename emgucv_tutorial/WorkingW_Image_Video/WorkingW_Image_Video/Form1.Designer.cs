@@ -39,6 +39,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.loadDir_button = new System.Windows.Forms.Button();
             this.NxtImg_button = new System.Windows.Forms.Button();
+            this.defSVM_button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -148,11 +149,22 @@
             this.NxtImg_button.UseVisualStyleBackColor = true;
             this.NxtImg_button.Click += new System.EventHandler(this.NxtImg_button_Click);
             // 
+            // defSVM_button
+            // 
+            this.defSVM_button.Location = new System.Drawing.Point(676, -1);
+            this.defSVM_button.Name = "defSVM_button";
+            this.defSVM_button.Size = new System.Drawing.Size(75, 23);
+            this.defSVM_button.TabIndex = 4;
+            this.defSVM_button.Text = "Def SVM";
+            this.defSVM_button.UseVisualStyleBackColor = true;
+            this.defSVM_button.Click += new System.EventHandler(this.defSVM_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(966, 482);
+            this.Controls.Add(this.defSVM_button);
             this.Controls.Add(this.NxtImg_button);
             this.Controls.Add(this.loadDir_button);
             this.Controls.Add(this.panel1);
@@ -184,6 +196,7 @@
         private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
         private System.Windows.Forms.Button loadDir_button;
         private System.Windows.Forms.Button NxtImg_button;
+        private System.Windows.Forms.Button defSVM_button;
     }
 }
 
