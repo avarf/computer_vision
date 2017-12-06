@@ -9,4 +9,6 @@ These two projects will use HOG (Histogram of Oriented Gradient) and SVM to dete
 In Visual Studio after creating our new project we should follow these steps:
 
 * Right click on the project name in the Solution toolbox and Add -> References -> add all the Emgu dll files
+* Add the opencv files to the project: Add -> Existing item -> Emgu-bin-X64
+* Select all the added opencv files and right click  -> Properties -> change "Copy to Output" to always
 * Right click on the project name in the Solution toolbox and Properties -> build -> change CPU to X64
