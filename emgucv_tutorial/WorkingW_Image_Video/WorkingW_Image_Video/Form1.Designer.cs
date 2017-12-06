@@ -37,6 +37,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.loadDir_button = new System.Windows.Forms.Button();
+            this.NxtImg_button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -67,28 +69,28 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // playToolStripMenuItem
             // 
             this.playToolStripMenuItem.Name = "playToolStripMenuItem";
-            this.playToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.playToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.playToolStripMenuItem.Text = "Play";
             this.playToolStripMenuItem.Click += new System.EventHandler(this.playToolStripMenuItem_ClickAsync);
             // 
             // pauseToolStripMenuItem
             // 
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.pauseToolStripMenuItem.Text = "Pause";
             this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -126,11 +128,33 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // loadDir_button
+            // 
+            this.loadDir_button.Location = new System.Drawing.Point(512, -1);
+            this.loadDir_button.Name = "loadDir_button";
+            this.loadDir_button.Size = new System.Drawing.Size(75, 23);
+            this.loadDir_button.TabIndex = 2;
+            this.loadDir_button.Text = "Load Dir";
+            this.loadDir_button.UseVisualStyleBackColor = true;
+            this.loadDir_button.Click += new System.EventHandler(this.loadDir_button_Click);
+            // 
+            // NxtImg_button
+            // 
+            this.NxtImg_button.Location = new System.Drawing.Point(594, -2);
+            this.NxtImg_button.Name = "NxtImg_button";
+            this.NxtImg_button.Size = new System.Drawing.Size(75, 23);
+            this.NxtImg_button.TabIndex = 3;
+            this.NxtImg_button.Text = "Next Img";
+            this.NxtImg_button.UseVisualStyleBackColor = true;
+            this.NxtImg_button.Click += new System.EventHandler(this.NxtImg_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(966, 482);
+            this.Controls.Add(this.NxtImg_button);
+            this.Controls.Add(this.loadDir_button);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -158,6 +182,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem playToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
+        private System.Windows.Forms.Button loadDir_button;
+        private System.Windows.Forms.Button NxtImg_button;
     }
 }
 

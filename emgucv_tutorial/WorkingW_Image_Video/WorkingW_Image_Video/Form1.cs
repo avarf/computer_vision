@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 using Emgu;
 using Emgu.CV;
@@ -16,9 +17,11 @@ namespace WorkingW_Image_Video
 {
     public partial class Form1 : Form
     {
-
+        List<Image<Bgr, byte>> allimages = new List<Image<Bgr, byte>>();
+        private FolderBrowserDialog folderBrowserDialog1;
         VideoCapture captureobj;
         bool Pause = false;
+        int imnum = 0;
 
         public Form1()
         {
@@ -73,6 +76,45 @@ namespace WorkingW_Image_Video
         private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Pause = !Pause;
+        }
+
+        private void loadDir_button_Click(object sender, EventArgs e)
+        {
+            // read all the files names in a directory
+            // Show the FolderBrowserDialog.
+            string folderName = string.Empty;
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            DialogResult result = folderBrowserDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                folderName = folderBrowserDialog1.SelectedPath;
+            }
+
+            // get the files list
+            string[] fileEntries = Directory.GetFiles(folderName);
+            //foreach (string fileName in fileEntries)
+            //    textBox1.Text = textBox1.Text + "\n"+fileName;
+
+            // load each image into a matrix and store each matrix in a list/arraylist
+            //Image<Bgr, byte> img = new Image<Bgr, byte>(ofd.FileName);
+            // List<Image<Bgr, byte>> allimages = new List<Image<Bgr, byte>>();
+            foreach (string file in fileEntries)
+            {
+                allimages.Add(new Image<Bgr, byte>(file));
+            }
+
+            // Show the first image
+            pictureBox1.Image = allimages[imnum].Bitmap;
+            imnum += 1;
+            // each time that I press next image button it increase a counter and shows the next image
+
+
+        }
+
+        private void NxtImg_button_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = allimages[imnum].Bitmap;
+            imnum += 1;
         }
     }
 }
