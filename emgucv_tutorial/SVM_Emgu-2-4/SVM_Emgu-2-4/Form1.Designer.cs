@@ -32,6 +32,8 @@
             this.SVMTrain_button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.MySVMTrain_button = new System.Windows.Forms.Button();
+            this.LoadImges_button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -77,11 +79,33 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // MySVMTrain_button
+            // 
+            this.MySVMTrain_button.Location = new System.Drawing.Point(177, 13);
+            this.MySVMTrain_button.Name = "MySVMTrain_button";
+            this.MySVMTrain_button.Size = new System.Drawing.Size(87, 23);
+            this.MySVMTrain_button.TabIndex = 3;
+            this.MySVMTrain_button.Text = "My SVM Train";
+            this.MySVMTrain_button.UseVisualStyleBackColor = true;
+            this.MySVMTrain_button.Click += new System.EventHandler(this.MySVMTrain_button_Click);
+            // 
+            // LoadImges_button
+            // 
+            this.LoadImges_button.Location = new System.Drawing.Point(271, 13);
+            this.LoadImges_button.Name = "LoadImges_button";
+            this.LoadImges_button.Size = new System.Drawing.Size(75, 23);
+            this.LoadImges_button.TabIndex = 4;
+            this.LoadImges_button.Text = "Load Imges";
+            this.LoadImges_button.UseVisualStyleBackColor = true;
+            this.LoadImges_button.Click += new System.EventHandler(this.LoadImges_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 446);
+            this.Controls.Add(this.LoadImges_button);
+            this.Controls.Add(this.MySVMTrain_button);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SVMTrain_button);
             this.Controls.Add(this.SVMDef_button);
@@ -100,6 +124,8 @@
         private System.Windows.Forms.Button SVMTrain_button;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button MySVMTrain_button;
+        private System.Windows.Forms.Button LoadImges_button;
     }
 }
 
