@@ -6,6 +6,8 @@ This repository contains different projects for learning how to use OpenCV, Emgu
 These two projects will use HOG (Histogram of Oriented Gradient) and SVM to detect pedestrians.
 
 ## Working With Emgu CV
+I transfered the EmguCV codes to "uni_computer_vision".
+
 In Visual Studio after creating our new project we should follow these steps:
 
 * Right click on the project name in the Solution toolbox and Add -> References -> add all the Emgu dll files
