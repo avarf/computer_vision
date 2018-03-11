@@ -62,6 +62,7 @@ class PQTInterface(QWidget):
         page_layout.addWidget(start_btn)
         page_layout.addWidget(qbtn)
 
+        # Setting the page_layout as the main layout
         self.setLayout(page_layout)
         self.setGeometry(20, 150, 500, 500)
         self.setWindowTitle('simple window')
@@ -72,38 +73,6 @@ class PQTInterface(QWidget):
 
         self.ocv.changePixmap.connect(self.video_placeholder.setPixmap)
         self.ocv.start()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 if __name__ == '__main__':
 
