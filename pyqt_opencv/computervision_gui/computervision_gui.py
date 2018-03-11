@@ -70,10 +70,72 @@ class PQTInterface(QWidget):
         grey_btn = QPushButton('Grey', self)
         grey_btn.clicked.connect(partial(self.button_clicked, grey_btn))
 
+        gauss_filter_btn = QPushButton('Gauss Filter', self)
+        gauss_filter_btn.clicked.connect(partial(self.button_clicked, gauss_filter_btn))
+
+        hsobel_filter_btn = QPushButton('H Sobel', self)
+        hsobel_filter_btn.clicked.connect(partial(self.button_clicked, hsobel_filter_btn))
+
+        vsobel_filter_btn = QPushButton('V Sobel', self)
+        vsobel_filter_btn.clicked.connect(partial(self.button_clicked, vsobel_filter_btn))
+
+        thershold_filter_btn = QPushButton('Thershold', self)
+        thershold_filter_btn.clicked.connect(partial(self.button_clicked, thershold_filter_btn))
+
+        BOOSTING_btn = QPushButton('BOOSTING', self)
+        BOOSTING_btn.clicked.connect(partial(self.button_clicked, BOOSTING_btn))
+
+        MIL_btn = QPushButton('MIL', self)
+        MIL_btn.clicked.connect(partial(self.button_clicked, MIL_btn))
+
+        KCF_btn = QPushButton('KCF', self)
+        KCF_btn.clicked.connect(partial(self.button_clicked, KCF_btn))
+
+        TLD_btn = QPushButton('TLD', self)
+        TLD_btn.clicked.connect(partial(self.button_clicked, TLD_btn))
+
+        MEDIANFLOW_btn = QPushButton('MEDIANFLOW', self)
+        MEDIANFLOW_btn.clicked.connect(partial(self.button_clicked, MEDIANFLOW_btn))
+
+        GOTURN_btn = QPushButton('GOTURN', self)
+        GOTURN_btn.clicked.connect(partial(self.button_clicked, GOTURN_btn))
+
+        # = QPushButton('', self)
+        # .clicked.connect(partial(self.button_clicked, ))
+
+        # = QPushButton('', self)
+        # .clicked.connect(partial(self.button_clicked, ))
+
+        # Filters buttons
+        left_v_layout = QVBoxLayout()
+        left_v_layout.addWidget(gauss_filter_btn)
+        left_v_layout.addWidget(hsobel_filter_btn)
+        left_v_layout.addWidget(vsobel_filter_btn)
+        left_v_layout.addWidget(thershold_filter_btn)
+
+        # Other buttons
+        right_v_layout = QVBoxLayout()
+        right_v_layout.addWidget(start_btn)
+        right_v_layout.addWidget(grey_btn)
+
+        # layout for gathering all the top layouts and video_placeholder
+        top_h_layout = QHBoxLayout()
+        top_h_layout.addLayout(left_v_layout)
+        top_h_layout.addWidget(self.video_placeholder)
+        top_h_layout.addLayout(right_v_layout)
+
+        # Object tracking and detection buttons
+        bottom_h_layout = QHBoxLayout()
+        bottom_h_layout.addWidget(BOOSTING_btn)
+        bottom_h_layout.addWidget(MIL_btn)
+        bottom_h_layout.addWidget(KCF_btn)
+        bottom_h_layout.addWidget(TLD_btn)
+        bottom_h_layout.addWidget(MEDIANFLOW_btn)
+        bottom_h_layout.addWidget(GOTURN_btn)
+
         page_layout = QVBoxLayout()
-        page_layout.addWidget(self.video_placeholder)
-        page_layout.addWidget(start_btn)
-        page_layout.addWidget(grey_btn)
+        page_layout.addLayout(top_h_layout)
+        page_layout.addLayout(bottom_h_layout)
 
         # Setting the page_layout as the main layout
         self.setLayout(page_layout)
