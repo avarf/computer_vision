@@ -23,6 +23,7 @@ class OCV_Class(QThread):
     def __init__(self, device_id=0, parent=None):
         QThread.__init__(self, parent)
         self.videocap = cv2.VideoCapture(device_id)
+        self.filter_value = 5
 
     def run(self):
         while True:
@@ -31,6 +32,16 @@ class OCV_Class(QThread):
             # Operaions
             if self.btn_name == 'Grey':
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            elif self.btn_name == 'Gauss Filter':
+                frame = self.apply_filter(self.btn_name, frame)
+            elif self.btn_name == 'H Sobel':
+                frame = self.apply_filter(self.btn_name, frame)
+            elif self.btn_name == 'V Sobel':
+                frame = self.apply_filter(self.btn_name, frame)
+            elif self.btn_name == 'Thershold':
+                frame = self.apply_filter(self.btn_name, frame)
+            elif self.btn_name == '':
+                pass
             else:
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
@@ -47,6 +58,22 @@ class OCV_Class(QThread):
 
     def set_btn_name(self, btn_name):
         self.btn_name = btn_name
+        self.filter_value = 5
+
+    def apply_filter(self, filter_name, frame):
+        if filter_name == 'Gauss Filter':
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            filtered_frame = cv2.GaussianBlur(frame,(self.filter_value,self.filter_value),3)
+        elif filter_name == 'H Sobel':
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            filtered_frame = cv2.Sobel(frame,cv2.CV_64F, 0, 1, ksize=self.filter_value)
+        elif filter_name == 'V Sobel':
+            filtered_frame = cv2.Sobel(frame,cv2.CV_64F, 1, 0, ksize=self.filter_value)
+        elif filter_name == 'Thershold':
+            maxValue = 255
+            binTher_filt1,filtered_frame = cv2.threshold(frame, self.filter_value, maxValue, cv2.THRESH_BINARY)
+
+        return filtered_frame
 
         
 
@@ -100,8 +127,11 @@ class PQTInterface(QWidget):
         GOTURN_btn = QPushButton('GOTURN', self)
         GOTURN_btn.clicked.connect(partial(self.button_clicked, GOTURN_btn))
 
-        # = QPushButton('', self)
-        # .clicked.connect(partial(self.button_clicked, ))
+        increase_btn = QPushButton('+', self)
+        increase_btn.clicked.connect(partial(self.value_button_clicked, increase_btn))
+
+        decrease_btn= QPushButton('-', self)
+        decrease_btn.clicked.connect(partial(self.value_button_clicked, decrease_btn))
 
         # = QPushButton('', self)
         # .clicked.connect(partial(self.button_clicked, ))
@@ -112,6 +142,9 @@ class PQTInterface(QWidget):
         left_v_layout.addWidget(hsobel_filter_btn)
         left_v_layout.addWidget(vsobel_filter_btn)
         left_v_layout.addWidget(thershold_filter_btn)
+        left_v_layout.addWidget(increase_btn)
+        left_v_layout.addWidget(decrease_btn)
+
 
         # Other buttons
         right_v_layout = QVBoxLayout()
@@ -147,6 +180,13 @@ class PQTInterface(QWidget):
     def button_clicked(self, button):
         self.ocv.set_btn_name(button.text())
         self._start_video_play()
+
+        # function for emitting the button_value signal
+    def value_button_clicked(self, button):
+        if button.text()=='+':
+            self.ocv.filter_value += 2
+        else:
+            self.ocv.filter_value -= 2
 
     def _start_video_play(self):
         self.ocv.changePixmap.connect(self.video_placeholder.setPixmap)
